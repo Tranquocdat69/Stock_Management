@@ -1,0 +1,185 @@
+﻿@model IEnumerable<Stock_Management.Models.TbBangHienThi>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center">Bảng chứng khoán</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm mới</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tran)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.San)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuaG3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuaKl3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuaG2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuaKl2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuaG1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MuaKl1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhopLenhGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KhopLenhKl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TileTangGiam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BanG1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BanKl1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BanG2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BanKl2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BanG3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BanKl3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TongKl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoCua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CaoNhat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThapNhat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nnmua)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nnban)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Room)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+             <td>
+                <a asp-action="Edit" asp-route-code="@item.Ma" class="btn btn-sm btn-success">Sửa</a> 
+                <a asp-action="Details" asp-route-id="@item.Ma" class="btn btn-sm btn-info">Chi tiết</a> 
+                <a asp-action="Delete" asp-route-id="@item.Ma" class="btn btn-sm btn-danger">Xóa</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tran)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.San)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MuaG3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MuaKl3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MuaG2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MuaKl2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MuaG1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MuaKl1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhopLenhGia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KhopLenhKl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TileTangGiam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BanG1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BanKl1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BanG2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BanKl2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BanG3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BanKl3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TongKl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoCua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CaoNhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThapNhat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nnmua)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nnban)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

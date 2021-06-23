@@ -1,0 +1,168 @@
+﻿@model Stock_Management.Models.TbBangHienThi
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>TbBangHienThi</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tran)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tran)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.San)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.San)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MuaG3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MuaG3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MuaKl3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MuaKl3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MuaG2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MuaG2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MuaKl2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MuaKl2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MuaG1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MuaG1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MuaKl1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MuaKl1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KhopLenhGia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KhopLenhGia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KhopLenhKl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KhopLenhKl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TileTangGiam)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TileTangGiam)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BanG1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BanG1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BanKl1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BanKl1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BanG2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BanG2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BanKl2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BanKl2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BanG3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BanG3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BanKl3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BanKl3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TongKl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TongKl)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MoCua)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MoCua)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CaoNhat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CaoNhat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ThapNhat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ThapNhat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nnmua)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nnmua)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nnban)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nnban)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Room)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Room)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Ma">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
