@@ -98,11 +98,15 @@
         <tr>
              <td>
                 <a asp-action="Edit" asp-route-code="@item.Ma" class="btn btn-sm btn-success">Sửa</a> 
-                <a asp-action="Details" asp-route-id="@item.Ma" class="btn btn-sm btn-info">Chi tiết</a> 
-                <a asp-action="Delete" asp-route-id="@item.Ma" class="btn btn-sm btn-danger">Xóa</a>
+                 <form asp-action="Delete" method="post">
+                     <input type="hidden" asp-for="@item.Ma" name="code" />
+                     <button type="submit" onclick="return confirm('Bạn chắc chắn muốn xóa??')" class="btn btn-sm btn-danger">Xóa</button>
+                 </form>
             </td>
             <td>
+                <a asp-action="Details" asp-route-code="@item.Ma">
                 @Html.DisplayFor(modelItem => item.Ma)
+                    </a> 
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Tc)

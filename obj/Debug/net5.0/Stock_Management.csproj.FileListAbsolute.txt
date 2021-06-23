@@ -163,3 +163,4 @@ D:\WORKSPACE\c# projects\Stock_Management\obj\Debug\net5.0\Razor\Views\Test\Deta
 D:\WORKSPACE\c# projects\Stock_Management\obj\Debug\net5.0\Razor\Views\Test\Edit.cshtml.g.cs
 D:\WORKSPACE\c# projects\Stock_Management\obj\Debug\net5.0\Razor\Views\Test\Index.cshtml.g.cs
 D:\WORKSPACE\c# projects\Stock_Management\obj\Debug\net5.0\Razor\Views\StockTable\Edit.cshtml.g.cs
+D:\WORKSPACE\c# projects\Stock_Management\obj\Debug\net5.0\Razor\Views\StockTable\Details.cshtml.g.cs

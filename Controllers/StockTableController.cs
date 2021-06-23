@@ -43,7 +43,7 @@ namespace Stock_Management.Controllers
 
             return View(result);
         }
-
+        [Authorize]
         [HttpGet]
         public IActionResult Create()
         {
@@ -51,6 +51,7 @@ namespace Stock_Management.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(TbBangHienThi data)
         {
             if (ModelState.IsValid)
@@ -82,6 +83,7 @@ namespace Stock_Management.Controllers
             return View();
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> Edit(string code)
         {
@@ -100,7 +102,6 @@ namespace Stock_Management.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
         public async Task<IActionResult> Edit(string code, TbBangHienThi data)
         {
             var tbBangHienThi = await _db.TbBangHienThis.FindAsync(code);
@@ -121,6 +122,42 @@ namespace Stock_Management.Controllers
                 }
             }
             return View(tbBangHienThi);
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Details(string code)
+        {
+            if (code == null)
+            {
+                return NotFound();
+            }
+
+            var tbBangHienThi = await _db.TbBangHienThis.FindAsync(code);
+            if (tbBangHienThi == null)
+            {
+                return NotFound();
+            }
+            return View(tbBangHienThi);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(string code)
+        {
+            using (var client = new HttpClient())
+            {
+                var httpRequestMessage = new HttpRequestMessage();
+                httpRequestMessage.Method = HttpMethod.Delete;
+                httpRequestMessage.RequestUri = new Uri("https://localhost:5001/stocktableapi/delete/" + code);
+
+                HttpResponseMessage httpResponseMessage = await client.SendAsync(httpRequestMessage);
+                if (httpResponseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            return View();
         }
     }
 }
