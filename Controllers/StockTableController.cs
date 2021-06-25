@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using Stock_Management.Hubs;
 using Stock_Management.Models;
 
 namespace Stock_Management.Controllers
@@ -16,9 +18,12 @@ namespace Stock_Management.Controllers
     public class StockTableController : Controller
     {
         private readonly ChungKhoanContext _db;
-        public StockTableController(ChungKhoanContext db)
+        private readonly IHubContext<SignalrServer> _signalrHub;
+
+        public StockTableController(ChungKhoanContext db, IHubContext<SignalrServer> signalrHub)
         {
             _db = db;
+            _signalrHub = signalrHub;
         }
 
         [Authorize]
@@ -43,6 +48,30 @@ namespace Stock_Management.Controllers
 
             return View(result);
         }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetDataTable()
+        {
+            string stringResult = "";
+            List<TbBangHienThi> result = new List<TbBangHienThi>();
+
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:5001/stocktableapi/");
+                HttpResponseMessage response = await client.GetAsync("get_all_data");
+                response.EnsureSuccessStatusCode();
+                stringResult = await response.Content.ReadAsStringAsync();
+            }
+            result = JsonSerializer.Deserialize<List<TbBangHienThi>>(stringResult, new JsonSerializerOptions()
+            {
+                PropertyNameCaseInsensitive = true
+            });
+            ViewData["data"] = result;
+
+            return Ok(result);
+        }
+
         [Authorize]
         [HttpGet]
         public IActionResult Create()
@@ -75,6 +104,7 @@ namespace Stock_Management.Controllers
                         HttpResponseMessage httpResponseMessage = await client.SendAsync(httpRequestMessage);
                         if (httpResponseMessage.IsSuccessStatusCode)
                         {
+                            await _signalrHub.Clients.All.SendAsync("LoadDataTable");
                             return RedirectToAction(nameof(Index));
                         }
                     }
@@ -118,6 +148,7 @@ namespace Stock_Management.Controllers
                 HttpResponseMessage httpResponseMessage = await client.SendAsync(httpRequestMessage);
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
+                    await _signalrHub.Clients.All.SendAsync("LoadDataTable");
                     return RedirectToAction(nameof(Index));
                 }
             }
@@ -142,7 +173,6 @@ namespace Stock_Management.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(string code)
         {
             using (var client = new HttpClient())
@@ -154,10 +184,11 @@ namespace Stock_Management.Controllers
                 HttpResponseMessage httpResponseMessage = await client.SendAsync(httpRequestMessage);
                 if (httpResponseMessage.IsSuccessStatusCode)
                 {
+                    await _signalrHub.Clients.All.SendAsync("LoadDataTable");
                     return RedirectToAction(nameof(Index));
                 }
             }
-            return View();
+            return BadRequest("Không xóa được !!!");
         }
     }
 }

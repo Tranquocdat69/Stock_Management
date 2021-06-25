@@ -14,6 +14,8 @@ using System.Net.Http;
 using System;
 using System.Text;
 using System.Text.Json;
+using Microsoft.AspNetCore.SignalR;
+using Stock_Management.Hubs;
 
 namespace Stock_Management.Controllers
 {
@@ -21,9 +23,11 @@ namespace Stock_Management.Controllers
     public class UserController : Controller
     {
         private readonly ChungKhoanContext _db;
-        public UserController(ChungKhoanContext db)
+        private readonly IHubContext<SignalrServer> _signalrHub;
+        public UserController(ChungKhoanContext db, IHubContext<SignalrServer> signalrHub)
         {
             _db = db;
+            _signalrHub = signalrHub;
         }
 
         public class InputModel
@@ -96,7 +100,6 @@ namespace Stock_Management.Controllers
                         var userIdentity = new ClaimsIdentity(userClaims, "User Identity");
                         var userPrinciple = new ClaimsPrincipal(userIdentity);
                         await HttpContext.SignInAsync(userPrinciple);
-
                         return RedirectToAction("Index");
                     }
                     else

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stock_Management.DataManager;
+using Stock_Management.Hubs;
 using Stock_Management.Models;
 using Stock_Management.Repository;
 
@@ -38,6 +39,12 @@ namespace Stock_Management
             services.AddControllers().AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             services.AddControllersWithViews();
+            services.AddSignalR();
+
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +76,8 @@ namespace Stock_Management
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=StockTable}/{action=Index}/{id?}");
+
+                endpoints.MapHub<SignalrServer>("/signalrServer");
             });
         }
     }
